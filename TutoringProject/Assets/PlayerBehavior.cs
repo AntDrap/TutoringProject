@@ -113,7 +113,7 @@ public class PlayerBehavior : MonoBehaviour
             return;
         }
 
-        StopAllCoroutines();
+        StopCoroutine(nameof(WeaponSwing));
         StartCoroutine(WeaponSwing());
 
         Vector3 position = transform.position + (transform.forward);
