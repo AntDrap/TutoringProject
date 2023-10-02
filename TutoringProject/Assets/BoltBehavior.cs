@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BoltBehavior : MonoBehaviour
 {
+    public int value;
     public float spinSpeed = 30;
     void Start()
     {
@@ -19,6 +20,7 @@ public class BoltBehavior : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            GameController.instance.ChangeBoltAmount(value);
             Destroy(gameObject);
         }
     }
