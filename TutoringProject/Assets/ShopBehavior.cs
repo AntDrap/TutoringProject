@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 public class ShopBehavior : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class ShopBehavior : MonoBehaviour
         public string itemName;
         public int itemCost;
         public GameObject itemObject;
+        public Sprite itemIcon;
     }
 
     public Item[] shopItems;
@@ -34,6 +36,7 @@ public class ShopBehavior : MonoBehaviour
             GameObject shopButton = Instantiate(buttonPrefab, shopPanel);
             shopButton.GetComponent<Button>().onClick.RemoveAllListeners();
             shopButton.GetComponent<Button>().onClick.AddListener(() => BuyShopItem(i));
+            shopButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = shopItems[i].itemName + " - $" + shopItems[i].itemCost;
         }
 
         shopPanel.gameObject.SetActive(true);
@@ -49,9 +52,8 @@ public class ShopBehavior : MonoBehaviour
         shopPanel.gameObject.SetActive(false);
     }
 
-    public void BuyShopItem(int itemIndex)
+    public void BuyShopItem(Item currentItem)
     {
-        Item currentItem = shopItems[itemIndex];
         if (GameController.instance.BoltAmount >= currentItem.itemCost)
         {
             GameController.instance.ChangeBoltAmount(-currentItem.itemCost);
