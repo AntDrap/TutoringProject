@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.UI
+using UnityEngine.UI;
+using TMPro;
 
 public class ShopBehavior : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class ShopBehavior : MonoBehaviour
         public string itemName;
         public int itemCost;
         public GameObject itemObject;
+        public Sprite itemIcon;
     }
 
     public Item[] shopItems;
@@ -20,14 +22,18 @@ public class ShopBehavior : MonoBehaviour
     public Transform shopPandel;
     public Button closeShopButton;
 
+    private void Start()
+    {
+        OpenShop();
+    }
+
 
     public void OpenShop()
     {
         for(int i = 0; 1 < shopItems.Length; i++)
         {
             GameObject shopButton = Instantiate(buttonPrefab, shopPandel);
-            shopButton.GetComponent<Button>().onClick.RemoveAllListeners();
-            shopButton.GetComponent<Button>().onClick.AddListener(() => BuyShopItem(i));
+            shopButton.GetComponent<ShopItemBehavior>().SetShopItem(shopItems[i], this);
         }
 
         shopPandel.gameObject.SetActive(true);
@@ -39,9 +45,9 @@ public class ShopBehavior : MonoBehaviour
     }
 
 
-    public void BuyShopItem(int itemIndex)
+    public void BuyShopItem(Item currentItem)
     {
-        Item currentItem = shopItems[itemIndex];
+     
         if(GameController.instance.BoltAmount >= currentItem.itemCost)
         {
             GameController.instance.ChangeBoltAmount(-currentItem.itemCost);
