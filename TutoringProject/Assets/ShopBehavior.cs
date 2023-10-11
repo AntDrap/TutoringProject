@@ -29,14 +29,17 @@ public class ShopBehavior : MonoBehaviour
     public Transform shopPanel;
     public Button closeShopButton;
 
+    private void Start()
+    {
+        OpenShop();
+    }
+
     public void OpenShop()
     {
         for(int i = 0; i < shopItems.Length; i++)
         {
             GameObject shopButton = Instantiate(buttonPrefab, shopPanel);
-            shopButton.GetComponent<Button>().onClick.RemoveAllListeners();
-            shopButton.GetComponent<Button>().onClick.AddListener(() => BuyShopItem(i));
-            shopButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = shopItems[i].itemName + " - $" + shopItems[i].itemCost;
+            shopButton.GetComponent<ShopItemBehavior>().SetShopItem(shopItems[i], this);
         }
 
         shopPanel.gameObject.SetActive(true);
