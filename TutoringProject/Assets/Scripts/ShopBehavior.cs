@@ -29,11 +29,6 @@ public class ShopBehavior : MonoBehaviour
     public Transform shopPanel;
     public Button closeShopButton;
 
-    private void Start()
-    {
-        OpenShop();
-    }
-
     public void OpenShop()
     {
         for(int i = 0; i < shopItems.Length; i++)
@@ -43,6 +38,7 @@ public class ShopBehavior : MonoBehaviour
         }
 
         shopPanel.gameObject.SetActive(true);
+        closeShopButton.gameObject.SetActive(true);
     }
 
     public void CloseShop()
@@ -53,6 +49,7 @@ public class ShopBehavior : MonoBehaviour
         }
 
         shopPanel.gameObject.SetActive(false);
+        closeShopButton.gameObject.SetActive(false);
     }
 
     public void BuyShopItem(Item currentItem)

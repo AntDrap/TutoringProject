@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 2669238566457616416}
   - component: {fileID: 7518756830993777034}
   - component: {fileID: 1353885295239063121}
+  - component: {fileID: 7159250457181039220}
   m_Layer: 5
   m_Name: ItemPanel
   m_TagString: Untagged
@@ -239,6 +240,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!114 &7159250457181039220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593630796513037400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b50d6d446a8a89418e1e92e6e8940d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 6904712841605328997}
+  itemText: {fileID: 6083586295997235379}
+  buyButton: {fileID: 3142529392910653913}
 --- !u!1 &2582768839805747562
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,7 +520,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3781622186656306791}
   - component: {fileID: 83471228922156358}
-  - component: {fileID: 1793320195056487394}
+  - component: {fileID: 6904712841605328997}
   m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
@@ -539,7 +555,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7977342822075570698}
   m_CullTransparentMesh: 1
---- !u!114 &1793320195056487394
+--- !u!114 &6904712841605328997
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -548,7 +564,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7977342822075570698}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -559,10 +575,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1

@@ -16,6 +16,7 @@ public class PlayerBehavior : MonoBehaviour
     public int health;
     public int maxHealth;
 
+    public GameObject interactPrompt;
     public GameObject sword;
     public CinemachineVirtualCamera cinemachineCamera;
 
@@ -28,6 +29,8 @@ public class PlayerBehavior : MonoBehaviour
     private bool grounded;
     private Rigidbody rigidbody;
 
+    private TriggerBehavior currentTrigger;
+
     private void Awake()
     {
         instance = this;
@@ -37,6 +40,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         health = maxHealth;
+        SetCurrentTrigger(null);
     }
 
     void Update()
@@ -91,6 +95,28 @@ public class PlayerBehavior : MonoBehaviour
         yield return new WaitForSeconds(time);
         noise.m_AmplitudeGain = 0;
         noise.m_FrequencyGain = 0;
+    }
+
+    public void SetCurrentTrigger(TriggerBehavior triggerBehavior)
+    {
+        if(triggerBehavior)
+        {
+            interactPrompt.SetActive(true);
+            currentTrigger = triggerBehavior;
+        }
+        else
+        {
+            interactPrompt.SetActive(false);
+            currentTrigger = null;
+        }
+    }
+
+    private void OnInteract()
+    {
+        if(currentTrigger)
+        {
+            currentTrigger.onStayInput.Invoke();
+        }
     }
 
     private void OnMovement(InputValue iValue)

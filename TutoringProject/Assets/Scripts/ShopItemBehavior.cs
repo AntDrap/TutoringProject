@@ -16,7 +16,9 @@ public class ShopItemBehavior : MonoBehaviour
         itemIcon.sprite = item.itemIcon;
         itemText.text = item.itemName + " - $" + item.itemCost;
         buyButton.onClick.RemoveAllListeners();
+
         buyButton.onClick.AddListener(() => shop.BuyShopItem(item));
+        buyButton.onClick.AddListener(() => buyButton.interactable = GameController.instance.BoltAmount >= item.itemCost);
 
         buyButton.interactable = GameController.instance.BoltAmount >= item.itemCost;
     }
